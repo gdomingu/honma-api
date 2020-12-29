@@ -1,0 +1,27 @@
+<%= form_with(model: dialect, local: true) do |form| %>
+  <% if dialect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dialect.errors.count, "error") %> prohibited this dialect from being saved:</h2>
+
+      <ul>
+        <% dialect.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name_en %>
+    <%= form.text_field :name_en %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name_jp %>
+    <%= form.text_field :name_jp %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
