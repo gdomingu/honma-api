@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dialect id:</strong>
+  <%= @grammar.dialect_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @grammar.description %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @grammar.position %>
+</p>
+
+<%= link_to 'Edit', edit_grammar_path(@grammar) %> |
+<%= link_to 'Back', grammars_path %>
