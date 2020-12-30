@@ -1,25 +1,25 @@
 class GrammarsController < ApplicationController
   before_action :set_grammar, only: [:show, :edit, :update, :destroy]
 
-  # GET /dialects
+  # GET /grammars
   def index
     @grammars = Grammar.all
   end
 
-  # GET /dialects/1
+  # GET /grammars/1
   def show
   end
 
-  # GET /dialects/1/edit
+  # GET /grammars/1/edit
   def edit
   end
 
-  # GET /dialects/new
+  # GET /grammars/new
   def new
     @grammar = Grammar.new
   end
 
-  # POST /dialects
+  # POST /grammars
   def create
     @grammar = Grammar.new(grammar_params)
     if @grammar.save
@@ -29,7 +29,7 @@ class GrammarsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dialects/1
+  # PATCH/PUT /grammars/1
   def update
     if @grammar.update(grammar_params)
       redirect_to @grammar, notice: 'Grammar was successfully updated.' 
@@ -38,7 +38,7 @@ class GrammarsController < ApplicationController
     end
   end
 
- # DELETE /dialects/1
+ # DELETE /grammars/1
   def destroy
     @grammar.destroy
     redirect_to grammars_url, notice: 'Grammar was successfully destroyed.'
