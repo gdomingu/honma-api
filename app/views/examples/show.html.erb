@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grammar id:</strong>
+  <%= @example.grammar_id %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @example.language %>
+</p>
+
+<p>
+  <strong>Sentence1:</strong>
+  <%= @example.sentence1 %>
+</p>
+
+<p>
+  <strong>Sentence2:</strong>
+  <%= @example.sentence2 %>
+</p>
+
+<p>
+  <strong>Clip name:</strong>
+  <%= @example.clip_name %>
+</p>
+
+<%= link_to 'Edit', edit_example_path(@example) %> |
+<%= link_to 'Back', examples_path %>
