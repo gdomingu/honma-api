@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  #for mobile
+  namespace :api do
+    resources :dialects, only: :index
+  end
+  #for admin
   resources :dialects
   resources :grammars
   resources :examples
