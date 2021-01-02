@@ -3,7 +3,7 @@ class GrammarsController < ApplicationController
 
   # GET /grammars
   def index
-    @grammars = Grammar.all
+    @grammars = Grammar.includes(:dialect)
   end
 
   # GET /grammars/1

@@ -2,7 +2,7 @@ class ExamplesController < ApplicationController
   before_action :set_example, only: [:show, :edit, :update, :destroy]
 
   def index
-    @examples = Example.all
+    @examples = Example.includes(:grammar)
   end
 
   def show
