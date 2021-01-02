@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :dialect_id %>
-    <%= form.text_field :dialect_id %>
+    <%= form.select :dialect_id, Dialect.order(:name_en).pluck(:name_en, :id), include_blank: true %>
   </div>
 
   <div class="field">
