@@ -25,5 +25,10 @@
   <%= @example.clip_name %>
 </p>
 
+<p>
+  <strong>Audio:</strong>
+  <%= audio_tag(url_for(@example.audio_clip), controls: true) %>
+</p>
+
 <%= link_to 'Edit', edit_example_path(@example) %> |
 <%= link_to 'Back', examples_path %>
