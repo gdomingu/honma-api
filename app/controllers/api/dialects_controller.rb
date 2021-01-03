@@ -10,6 +10,7 @@ module Api
           grammars: dialect.grammars.map do |grammar|
              {
               id: grammar.id,
+              label: grammar.label,
               description: grammar.description,
               position: grammar.position,
               examples: grammar.examples
