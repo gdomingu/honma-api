@@ -59,7 +59,7 @@ Dialect.destroy_all
         description: "いい changes to ええ",
         examples: [
         {language: "jp", sentence1: "これ食べてええ？", sentence2: "ええよ"},
-        {language: "en", sentence1: "That was tasty!", sentence2: "It sure was!"}
+        {language: "en", sentence1: "Can I eat this?", sentence2: "Sure."}
       ]},
       {label: "れば / りゃあ", 
         description: "れば changes to りゃあ",
