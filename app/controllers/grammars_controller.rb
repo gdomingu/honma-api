@@ -4,6 +4,7 @@ class GrammarsController < ApplicationController
   # GET /grammars
   def index
     @grammars = Grammar.includes(:dialect)
+    @grammars = @grammars.where(dialect_id: params[:dialect_id]) if params[:dialect_id]
   end
 
   # GET /grammars/1

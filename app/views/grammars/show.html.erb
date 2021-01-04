@@ -15,5 +15,19 @@
   <%= @grammar.position %>
 </p>
 
+<p>
+  <strong>Examples:</strong>
+  <br>
+  <% @grammar.examples.each do |example| %>
+    <span><%= example.sentence1 %></span>
+    <span><%= example.sentence2 %></span>
+    <%= link_to "Edit", edit_example_path(example) %>
+    <br>
+  <% end %>
+</p>
+
+
+
+<%= link_to 'Add Example', new_example_path(grammar_id: @grammar.id) %> |
 <%= link_to 'Edit', edit_grammar_path(@grammar) %> |
 <%= link_to 'Back', grammars_path %>
