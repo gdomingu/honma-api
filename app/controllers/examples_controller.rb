@@ -9,7 +9,7 @@ class ExamplesController < ApplicationController
   end
 
   def new
-    @example = Example.new
+    @example = Example.new(grammar_id: params[:grammar_id])
   end
 
   def edit
