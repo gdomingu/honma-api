@@ -27,7 +27,9 @@
 
 <p>
   <strong>Audio:</strong>
-  <%= audio_tag(url_for(@example.audio_clip), controls: true) %>
+  <% if @example.audio_clip.present?%>
+    <%= audio_tag(url_for(@example.audio_clip), controls: true) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_example_path(@example) %> |
