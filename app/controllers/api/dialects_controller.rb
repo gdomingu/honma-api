@@ -9,6 +9,7 @@ module Api
           name_jp: dialect.name_jp, 
           start_btn_text: dialect.start_btn_text, 
           next_btn_text: dialect.next_btn_text, 
+          complete_btn_text: dialect.complete_btn_text, 
           grammars: dialect.grammars.map do |grammar|
              {
               id: grammar.id,
