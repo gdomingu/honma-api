@@ -2,7 +2,7 @@ module Api
   class DialectsController < ApplicationController
 
     def index
-      dialects = Dialect.includes(grammars: :examples).map do |dialect| 
+      dialects = Dialect.order(:name_en).includes(grammars: :examples).map do |dialect| 
         { 
           id: dialect.id,
           name_en: dialect.name_en, 
