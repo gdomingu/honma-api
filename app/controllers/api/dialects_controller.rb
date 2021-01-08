@@ -10,7 +10,7 @@ module Api
           start_btn_text: dialect.start_btn_text, 
           next_btn_text: dialect.next_btn_text, 
           complete_btn_text: dialect.complete_btn_text, 
-          grammars: dialect.grammars.map do |grammar|
+          grammars: dialect.grammars.order(:position).map do |grammar|
              {
               id: grammar.id,
               label: grammar.label,
