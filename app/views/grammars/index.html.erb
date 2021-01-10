@@ -28,4 +28,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Go to new grammar',  new_grammar_path %>
+<%= link_to 'Go to new grammar',  new_grammar_path(dialect_id: @dialect&.id) %>
