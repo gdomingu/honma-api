@@ -6,7 +6,7 @@ class GrammarsController < ApplicationController
     @grammars = Grammar.includes(:dialect)
     if params[:dialect_id]
       @dialect = Dialect.find(params[:dialect_id])
-      @grammars = @grammars.where(dialect_id: params[:dialect_id]) 
+      @grammars = @grammars.where(dialect: @dialect) 
     end
   end
 
