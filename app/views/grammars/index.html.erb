@@ -21,7 +21,7 @@
         <td><%= grammar.label %></td>
         <td><%= grammar.description %></td>
         <td><%= grammar.position %></td>
-        <td><%= grammar.examples.length %></td>
+        <td><%= grammar.examples.size %></td>
         <td><%= link_to 'Show', grammar %></td>
         <td><%= link_to 'Edit', edit_grammar_path(grammar) %></td>
         <td><%= link_to 'Destroy', grammar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
