@@ -4,8 +4,10 @@ class GrammarsController < ApplicationController
   # GET /grammars
   def index
     @grammars = Grammar.includes(:dialect)
-    @grammars = @grammars.where(dialect_id: params[:dialect_id]) if params[:dialect_id]
-
+    if params[:dialect_id]
+      @dialect = Dialect.find(params[:dialect_id])
+      @grammars = @grammars.where(dialect: @dialect) 
+    end
   end
 
   # GET /grammars/1
@@ -18,7 +20,7 @@ class GrammarsController < ApplicationController
 
   # GET /grammars/new
   def new
-    @grammar = Grammar.new
+    @grammar = Grammar.new(dialect_id: params[:dialect_id])
   end
 
   # POST /grammars
