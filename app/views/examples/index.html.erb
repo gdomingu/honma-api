@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Dialect</th>
       <th>Grammar</th>
       <th>Language</th>
       <th>Sentence 1</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @examples.each do |example| %>
       <tr>
+        <td><%= example.grammar.dialect.name_jp %></td>
         <td><%= example.grammar.description %></td>
         <td><%= example.language %></td>
         <td><%= example.sentence1 %></td>
