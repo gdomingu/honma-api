@@ -36,8 +36,6 @@
   <% end %>
 </p>
 
-
-
 <%= link_to 'Add Example', new_example_path(grammar_id: @grammar.id) %> |
 <%= link_to 'Edit', edit_grammar_path(@grammar) %> |
-<%= link_to 'Back', grammars_path %>
+<%= link_to 'Back', grammars_path(dialect_id: @grammar.dialect_id) %>
