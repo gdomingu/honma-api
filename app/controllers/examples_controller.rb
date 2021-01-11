@@ -2,7 +2,7 @@ class ExamplesController < ApplicationController
   before_action :set_example, only: [:show, :edit, :update, :destroy]
 
   def index
-    @examples = Example.includes(:grammar)
+    @examples = Example.includes(grammar: :dialect).order("dialects.name_en")
     if params[:grammar_id]
       @grammar = Grammar.find(params[:grammar_id])
       @examples = @grammars.where(grammar: @grammar) 
