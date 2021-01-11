@@ -61,6 +61,6 @@ class ExamplesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def example_params
-      params.require(:example).permit(:language, :sentence1, :sentence2, :clip_name, :grammar_id, :audio_clip)
+      params.require(:example).permit(:language, :sentence1, :sentence2, :grammar_id, :audio_clip)
     end
 end
