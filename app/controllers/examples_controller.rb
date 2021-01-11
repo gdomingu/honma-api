@@ -3,6 +3,10 @@ class ExamplesController < ApplicationController
 
   def index
     @examples = Example.includes(:grammar)
+    if params[:grammar_id]
+      @grammar = Grammar.find(params[:grammar_id])
+      @examples = @grammars.where(grammar: @grammar) 
+    end
   end
 
   def show
@@ -20,7 +24,7 @@ class ExamplesController < ApplicationController
 
     respond_to do |format|
       if @example.save
-        format.html { redirect_to @example, notice: 'Example was successfully created.' }
+        format.html { redirect_to @example.grammar, notice: 'Example was successfully created.' }
         format.json { render :show, status: :created, location: @example }
       else
         format.html { render :new }
@@ -32,7 +36,7 @@ class ExamplesController < ApplicationController
   def update
     respond_to do |format|
       if @example.update(example_params)
-        format.html { redirect_to @example, notice: 'Example was successfully updated.' }
+        format.html { redirect_to @example.grammar, notice: 'Example was successfully updated.' }
         format.json { render :show, status: :ok, location: @example }
       else
         format.html { render :edit }
