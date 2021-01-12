@@ -12,6 +12,7 @@ class GrammarsController < ApplicationController
 
   # GET /grammars/1
   def show
+    @example = Example.new(grammar_id: @grammar.id)
   end
 
   # GET /grammars/1/edit

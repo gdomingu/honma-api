@@ -11,15 +11,8 @@
     </div>
   <% end %>
 
-  <div>
-    <h4><%= @example.grammar.dialect.name_en %> dialect</h4>
-  </div>
+  <%= form.hidden_field :grammar_id %>
   
-  <div class="field">
-    <%= form.label :grammar_id %>
-    <%= form.select :grammar_id, Grammar.order(:description).pluck(:description, :id), include_blank: true %>
-  </div>
-
   <div class="field">
     <%= form.label :language %>
     <%= form.select :language, [["Japanese", "jp" ], ["English", "en"]], include_blank: true %>
