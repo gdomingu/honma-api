@@ -16,6 +16,7 @@ module Api
               label: grammar.label,
               description: grammar.description,
               position: grammar.position,
+              commonness: grammar.commonness,
               examples: grammar.examples.map do |example|
                 url = example.audio_clip.present? ? url_for(example.audio_clip) : nil
                 example.attributes.merge!(audio_clip_url: url)
