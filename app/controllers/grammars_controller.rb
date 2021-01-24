@@ -55,6 +55,6 @@ class GrammarsController < ApplicationController
     end
 
     def grammar_params
-      params.require(:grammar).permit(:description, :position, :dialect_id, :label)
+      params.require(:grammar).permit(:description, :position, :dialect_id, :label, :commonness)
     end
 end

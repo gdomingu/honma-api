@@ -31,6 +31,11 @@
     <%= form.text_field :position %>
   </div>
 
+  <div class="field">
+    <%= form.label :commonness %>
+    <%= form.select :commonness, (1..5), include_blank: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
