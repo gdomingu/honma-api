@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_014415) do
+ActiveRecord::Schema.define(version: 2021_01_27_001712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,17 @@ ActiveRecord::Schema.define(version: 2021_01_24_014415) do
     t.index ["dialect_id"], name: "index_grammars_on_dialect_id"
   end
 
+  create_table "quizzes", force: :cascade do |t|
+    t.text "tokyo"
+    t.text "answer"
+    t.bigint "grammar_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["grammar_id"], name: "index_quizzes_on_grammar_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "examples", "grammars"
   add_foreign_key "grammars", "dialects"
+  add_foreign_key "quizzes", "grammars"
 end
