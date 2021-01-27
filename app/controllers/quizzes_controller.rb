@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :set_example, only: [:show, :edit, :update, :destroy]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
 
   def index
     @quizzes = Quiz.includes(grammar: :dialect).order("dialects.name_en")
@@ -33,8 +33,20 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @quiz.update(quiz_params)
+        format.html { redirect_to @quiz.grammar, notice: 'Quiz was successfully updated.' }
+        format.json { render :show, status: :ok, location: @quiz }
+      else
+        format.html { render :edit }
+        format.json { render json: @quiz.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
-    def set_example
+    def set_quiz
       @quiz = Quiz.find(params[:id])
     end
 
