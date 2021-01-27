@@ -45,6 +45,14 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def destroy
+    @quiz.destroy
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path, notice: 'Quiz was successfully destroyed.'}
+      format.json { head :no_content }
+    end
+  end
+
   private
     def set_quiz
       @quiz = Quiz.find(params[:id])

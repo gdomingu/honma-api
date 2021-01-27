@@ -52,6 +52,7 @@
     <span>Tokyo: <%= quiz.tokyo %></span>
     <span>Answer: <%= quiz.answer %></span>
     <%= link_to "Edit", edit_quiz_path(quiz) %>
+    <%= link_to "Delete", quiz_path(quiz), method: :delete, data: { confirm: 'Are you sure?' } %>
     <br>
   <% end %>
 </p>
