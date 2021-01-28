@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dialect:</strong>
+  <%= @quiz.grammar.dialect.name_en %>
+</p>
+
+<p>
+  <strong>Grammar id:</strong>
+  <%= @quiz.grammar_id %>
+</p>
+
+<p>
+  <strong>Tokyo-ben:</strong>
+  <%= @quiz.tokyo %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @quiz.answer %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+<%= link_to 'Back', quizzes_path %>

@@ -34,8 +34,8 @@
   <strong>Examples:</strong>
   <br>
   <% @grammar.examples.each do |example| %>
-    <span><%= example.sentence1 %></span>
-    <span><%= example.sentence2 %></span>
+    <span>Sentence1: <%= example.sentence1 %></span>
+    <span>Sentence2: <%= example.sentence2 %></span>
     <%= link_to "Edit", edit_example_path(example) %>
     <br>
   <% end %>
@@ -43,6 +43,22 @@
 
 <%= render 'examples/form', example: @example%>
 
-<%= link_to 'Add Example', new_example_path(grammar_id: @grammar.id) %> |
+<%= link_to 'Add Example', new_example_path(grammar_id: @grammar.id) %> 
+
+<p>
+  <strong>Quizzes:</strong>
+  <br>
+  <% @grammar.quizzes.each do |quiz| %>
+    <span>Tokyo: <%= quiz.tokyo %></span>
+    <span>Answer: <%= quiz.answer %></span>
+    <%= link_to "Edit", edit_quiz_path(quiz) %>
+    <%= link_to "Delete", quiz_path(quiz), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+  <% end %>
+</p>
+
+<%= render 'quizzes/form', quiz: @quiz%>
+
+<br>
 <%= link_to 'Edit', edit_grammar_path(@grammar) %> |
 <%= link_to 'Back', grammars_path(dialect_id: @grammar.dialect_id) %>
