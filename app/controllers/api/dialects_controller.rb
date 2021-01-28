@@ -2,7 +2,7 @@ module Api
   class DialectsController < ApplicationController
 
     def index
-      dialects = Dialect.order(:name_en).includes(grammars: :examples).map do |dialect| 
+      dialects = Dialect.order(:name_en).includes(grammars: [:examples, :quizzes]).map do |dialect| 
         { 
           id: dialect.id,
           name_en: dialect.name_en, 
@@ -17,10 +17,17 @@ module Api
               description: grammar.description,
               position: grammar.position,
               commonness: grammar.commonness,
-              examples: grammar.examples.map do |example|
+              examples: grammar.examples.map {|example|
                 url = example.audio_clip.present? ? url_for(example.audio_clip) : nil
                 example.attributes.merge!(audio_clip_url: url)
-              end
+              },
+              quizzes: grammar.quizzes.map {|quiz|
+                {
+                  id: quiz.id, 
+                  tokyo: quiz.tokyo,  
+                  answer: quiz.answer
+                }
+              }
              }
           end
         }
