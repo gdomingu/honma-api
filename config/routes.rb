@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {sessions: 'users/sessions'}
   #for mobile
   namespace :api do
     resources :dialects, only: :index
