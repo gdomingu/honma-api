@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json
 
   protected
+    def json_request?
+      request.format.json?
+    end
 
-  def json_request?
-    request.format.json?
-  end
+  private
+    def json_response(object, status = :ok)
+      render json: object, status: status
+    end
+
 end
