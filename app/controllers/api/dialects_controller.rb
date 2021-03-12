@@ -25,7 +25,7 @@ module Api
                   id: quiz.id, 
                   tokyo: quiz.tokyo,  
                   answer: quiz.answer,
-                  quiz_completed: QuizCompletion.find_by(user: current_user, quiz: quiz)
+                  quiz_completed: QuizCompletion.find_by(user: current_user, quiz: quiz)&.created_at
                 }
               }
             }
