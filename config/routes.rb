@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #for mobile
   namespace :api do
     resources :dialects, only: :index
+    resources :quiz_completions
   end
   #for admin
   resources :dialects

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_202700) do
+ActiveRecord::Schema.define(version: 2021_03_10_220637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 2021_03_08_202700) do
     t.index ["dialect_id"], name: "index_grammars_on_dialect_id"
   end
 
+  create_table "quiz_completions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_quiz_completions_on_quiz_id"
+    t.index ["user_id"], name: "index_quiz_completions_on_user_id"
+  end
+
   create_table "quizzes", force: :cascade do |t|
     t.text "tokyo"
     t.text "answer"
@@ -94,5 +103,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_202700) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "examples", "grammars"
   add_foreign_key "grammars", "dialects"
+  add_foreign_key "quiz_completions", "quizzes"
+  add_foreign_key "quiz_completions", "users"
   add_foreign_key "quizzes", "grammars"
 end
