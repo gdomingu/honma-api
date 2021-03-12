@@ -1,6 +1,5 @@
 module Api 
   class DialectsController < ApplicationController
-
     def index
       dialects = Dialect.order(:name_en).includes(grammars: [:examples, :quizzes]).map do |dialect| 
         { 
@@ -25,10 +24,11 @@ module Api
                 {
                   id: quiz.id, 
                   tokyo: quiz.tokyo,  
-                  answer: quiz.answer
+                  answer: quiz.answer,
+                  quiz_completed: QuizCompletion.find_by(user: current_user, quiz: quiz)
                 }
               }
-             }
+            }
           end
         }
       end
