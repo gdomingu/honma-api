@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_220637) do
+ActiveRecord::Schema.define(version: 2021_09_25_225552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 2021_03_10_220637) do
     t.index ["dialect_id"], name: "index_grammars_on_dialect_id"
   end
 
+  create_table "place_infos", force: :cascade do |t|
+    t.string "name_jp"
+    t.string "name_en"
+    t.string "img_url"
+    t.float "latitude"
+    t.float "longtitude"
+    t.bigint "dialect_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dialect_id"], name: "index_place_infos_on_dialect_id"
+  end
+
   create_table "quiz_completions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "quiz_id", null: false
@@ -103,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_03_10_220637) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "examples", "grammars"
   add_foreign_key "grammars", "dialects"
+  add_foreign_key "place_infos", "dialects"
   add_foreign_key "quiz_completions", "quizzes"
   add_foreign_key "quiz_completions", "users"
   add_foreign_key "quizzes", "grammars"
