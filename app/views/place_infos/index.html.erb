@@ -17,7 +17,9 @@
       <tr>
         <td><%= place.name_en %></td>
         <td><%= place.name_jp %></td>
-        <td>123 Fake st <%= Dialect.find(place.dialect_id).name_en %></td>
+        <td>
+          <%= Geocoder.search([place.latitude, place.longtitude]).first.address %>
+        </td>
       </tr>
     <% end %>
   </tbody>
