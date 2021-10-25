@@ -18,11 +18,17 @@
         <td><%= place.name_en %></td>
         <td><%= place.name_jp %></td>
         <td>
-          <%= Geocoder.search([place.latitude, place.longtitude]).first.address %>
+          <% if place.latitude.present? && place.longtitude.present?%>
+              <%= Geocoder.search([place.latitude, place.longtitude]).first.address %>
+          <% end%>
         </td>
+        <td><%= link_to 'Show', place %></td>
+        <td><%= link_to 'Edit', edit_place_info_path(place) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<%= link_to 'New Place Info', new_place_info_path %>
