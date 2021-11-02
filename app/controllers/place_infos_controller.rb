@@ -38,6 +38,12 @@ class PlaceInfosController < ApplicationController
     end
   end
 
+  def destroy
+    @place_info = PlaceInfo.find(params[:id])
+    @place_info.destroy
+    redirect_to place_infos_url, notice: 'Place info was successfully destroyed.'
+  end
+
   private
     def place_info_params
       params.require(:place_info).permit(:name_en, :name_jp, :img_url, :dialect_id, :latitude, :longtitude)
