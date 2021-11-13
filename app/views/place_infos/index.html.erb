@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Dialect</th>
       <th>Name en</th>
       <th>Name jp</th>
       <th>Address</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @place_infos.each do |place| %>
       <tr>
+        <td><%= place.dialect.name_en %></td>
         <td><%= place.name_en %></td>
         <td><%= place.name_jp %></td>
         <td>
