@@ -3,7 +3,11 @@ class PlaceInfosController < ApplicationController
   before_action :set_place_info, only: [:show, :edit, :update, :destroy]
 
   def index
-    @place_infos = PlaceInfo.all
+    if params[:dialect_id]
+      @place_infos = PlaceInfo.includes(:dialect).where(dialect_id: params[:dialect_id])
+    else
+      @place_infos = PlaceInfo.includes(:dialect)
+    end
   end
   
   def show
