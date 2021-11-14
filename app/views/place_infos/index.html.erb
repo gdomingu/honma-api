@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Places</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dialect</th>
+      <th>Name en</th>
+      <th>Name jp</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @place_infos.each do |place| %>
+      <tr>
+        <td><%= place.dialect.name_en %></td>
+        <td><%= place.name_en %></td>
+        <td><%= place.name_jp %></td>
+        <td>
+          <% if place.latitude.present? && place.longtitude.present?%>
+              <%= Geocoder.search([place.latitude, place.longtitude]).first.address %>
+          <% end%>
+        </td>
+        <td><%= link_to 'Show', place %></td>
+        <td><%= link_to 'Edit', edit_place_info_path(place) %></td>
+        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Place Info', new_place_info_path %>
