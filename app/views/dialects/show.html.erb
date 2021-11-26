@@ -25,5 +25,14 @@
   <%= @dialect.complete_btn_text %>
 </p>
 
+<p>
+  <% if @dialect.place_infos.present? %>
+    <strong> Place info:</strong>
+    <% @dialect.place_infos.each do |place_info| %>
+      <li><%= link_to "#{place_info.name_en}", place_info_path(place_info) %></li>
+    <% end %>
+  <% end%>
+  <p><%= link_to 'Add place info', new_place_info_path(dialect_id: @dialect.id) %></p>
+
 <%= link_to 'Edit', edit_dialect_path(@dialect) %> |
 <%= link_to 'Back', dialects_path %>
