@@ -15,6 +15,12 @@
   <%= @place_info.name_jp %>
 </p>
 
+<% (@place_info.images).each do |image| %>
+  <div>
+    <%= image_tag(image) %>
+  </div>
+<% end %>
+
 <p>
   <strong>Address:</strong>
   <%= @address %>
