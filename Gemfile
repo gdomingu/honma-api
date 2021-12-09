@@ -50,3 +50,6 @@ gem "devise", "~> 4.7"
 gem "simple_token_authentication", "~> 1.17"
 
 gem "geocoder"
+
+gem "mini_magick"
+gem "image_processing"
