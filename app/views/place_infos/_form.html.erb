@@ -16,6 +16,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, {"Restaurants": "Restaurants", "Museums": "Museums", "Scenery": "Scenery", "Districts": "Districts"}, { include_blank: "Select category"}, {required: true} %>
+  </div>
+  
+  <div class="field">
     <%= form.label :image_url %>
     <%= form.text_field :img_url, placeholder: "image url" %>
   </div>
