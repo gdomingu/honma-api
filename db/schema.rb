@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_181035) do
+ActiveRecord::Schema.define(version: 2021_12_12_204253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_12_12_181035) do
     t.string "start_btn_text"
     t.string "next_btn_text"
     t.string "complete_btn_text"
+    t.text "description"
   end
 
   create_table "examples", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_12_12_181035) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
+    t.text "description"
     t.index ["dialect_id"], name: "index_place_infos_on_dialect_id"
   end
 
