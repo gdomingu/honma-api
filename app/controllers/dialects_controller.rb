@@ -69,6 +69,6 @@ class DialectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dialect_params
-      params.require(:dialect).permit(:name_en, :name_jp, :start_btn_text, :next_btn_text, :complete_btn_text, :default_image)
+      params.require(:dialect).permit(:name_en, :name_jp, :start_btn_text, :next_btn_text, :complete_btn_text, :description, :default_image)
     end
 end
