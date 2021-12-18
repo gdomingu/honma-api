@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :area %>
+    <%= form.select :area, {"Hokkaido": "Hokkaido", "Tohoku": "Tohoku", "Kanto": "Kanto", "Chubu": "Chubu","Kinki": "Kinki", "Chugoku": "Chugoku", "Shikoku": "Shikoku", "Kyushu": "Kyushu"}, { include_blank: "Select area"}, {required: true} %>
+  </div>
+  
+  <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, :size=>"60x10" %>
   </div>
