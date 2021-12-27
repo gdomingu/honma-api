@@ -17,7 +17,8 @@
       <tr>
         <td><%= dialect.name_en %></td>
         <td><%= dialect.name_jp %></td>
-        <td><%= dialect.area %></td>
+
+        <td><%= Dialect.areas.key(dialect.area) %></td>
         <td><%= link_to 'Show', dialect %></td>
         <td><%= link_to 'View Grammars', grammars_path(dialect_id: dialect.id) %></td>
         <td><%= link_to 'View Places', place_infos_path(dialect_id: dialect.id) %></td>
