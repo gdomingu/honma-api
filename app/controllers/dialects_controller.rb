@@ -4,7 +4,11 @@ class DialectsController < ApplicationController
   # GET /dialects
   # GET /dialects.json
   def index
-    @dialects = Dialect.all
+    if params[:sort] == "areas"
+      @dialects = Dialect.all.order(:area)
+    else
+      @dialects = Dialect.all
+    end
   end
 
   # GET /dialects/1
