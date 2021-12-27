@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_18_231634) do
+ActiveRecord::Schema.define(version: 2021_12_27_010238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_231634) do
     t.string "next_btn_text"
     t.string "complete_btn_text"
     t.text "description"
-    t.string "area"
+    t.integer "area"
   end
 
   create_table "examples", force: :cascade do |t|

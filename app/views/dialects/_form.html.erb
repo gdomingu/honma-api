@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :area %>
-    <%= form.select :area, {"Hokkaido": "Hokkaido", "Tohoku": "Tohoku", "Kanto": "Kanto", "Chubu": "Chubu","Kinki": "Kinki", "Chugoku": "Chugoku", "Shikoku": "Shikoku", "Kyushu": "Kyushu"}, { include_blank: "Select area"}, {required: true} %>
+    <%= form.select :area, {"Hokkaido": 0, "Tohoku": 1, "Kanto": 2, "Chubu": 3,"Kinki": 4, "Chugoku": 5, "Shikoku": 6, "Kyushu": 7}, { include_blank: "Select area"}, {required: true} %>
   </div>
   
   <div class="field">
