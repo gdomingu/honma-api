@@ -9,6 +9,8 @@ module Api
           start_btn_text: dialect.start_btn_text, 
           next_btn_text: dialect.next_btn_text, 
           complete_btn_text: dialect.complete_btn_text, 
+          description: dialect.description,
+          area: Dialect.areas.key(dialect.area),
           grammars: dialect.grammars.order(:position).map do |grammar|
              {
               id: grammar.id,
