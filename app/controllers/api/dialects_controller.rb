@@ -11,6 +11,7 @@ module Api
           complete_btn_text: dialect.complete_btn_text, 
           description: dialect.description,
           area: Dialect.areas.key(dialect.area),
+          default_image: dialect.default_image.url,
           grammars: dialect.grammars.order(:position).map do |grammar|
              {
               id: grammar.id,
@@ -32,7 +33,7 @@ module Api
               }
             }
           end
-        }
+        }  
       end
       render json: dialects
     end
