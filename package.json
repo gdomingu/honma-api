@@ -1,5 +1,6 @@
 {
   "name": "honma_api",
+  "scripts": { "start": ""},
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.12.10",
