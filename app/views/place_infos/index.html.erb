@@ -26,7 +26,7 @@
           <td><%= place.name_jp %></td>
           <td>
             <% if place.latitude.present? && place.longtitude.present?%>
-                <%= Geocoder.search([place.latitude, place.longtitude]).first.address %>
+                <%#= Geocoder.search([place.latitude, place.longtitude]).first.address %>
             <% end%>
           </td>
           <td><%= link_to 'Show', place %></td>

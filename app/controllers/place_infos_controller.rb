@@ -14,7 +14,7 @@ class PlaceInfosController < ApplicationController
     if @place_info.latitude.present? && @place_info.longtitude.present?
       latitude = @place_info.latitude
       longtitude = @place_info.longtitude
-      @address = Geocoder.search([latitude, longtitude]).first.address
+      # @address = Geocoder.search([latitude, longtitude]).first.address
     end
   end
 
