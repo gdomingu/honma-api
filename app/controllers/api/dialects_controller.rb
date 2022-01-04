@@ -32,11 +32,32 @@ module Api
                 }
               }
             }
+          end,
+          place_info: dialect.place_infos.map do |place_info|
+            {
+              id: place_info.id,
+              name_jp: place_info.name_jp,
+              name_en: place_info.name_en,
+              image: url_for(place_info.images.first),
+              description: place_info.description,
+              category: place_info.category,
+              address: get_address(place_info),
+            }
           end
         }  
       end
       render json: dialects
     end
+
+    private
+
+    def get_address(place_info)
+      if place_info.latitude.present? && place_info.longtitude.present?
+        return Geocoder.search([place_info.latitude, place_info.longtitude]).first.address
+      end
+      nil
+    end
+
   end
 end
 
