@@ -53,11 +53,11 @@ module Api
 
     def get_address(place_info)
       if place_info.latitude.present? && place_info.longtitude.present?
-        Geocoder.search([place_info.latitude, place_info.longtitude]).first.address
+        return Geocoder.search([place_info.latitude, place_info.longtitude]).first.address
       end
       nil
     end
-    
+
   end
 end
 
