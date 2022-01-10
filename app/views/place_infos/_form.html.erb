@@ -1,4 +1,15 @@
 <%= form_with(model: place_info, local: true) do |form| %>
+  <% if place_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(place_info.errors.count, "error") %> prohibited this place info from being saved:</h2>
+
+      <ul>
+        <% place_info.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :dialect_id %>
