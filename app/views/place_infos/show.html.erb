@@ -32,6 +32,14 @@
 </p>
 
 <p>
+  <strong>Website:</strong>
+  <% if @place_info.website.nil? %>
+    Not available
+  <% end %>
+  <%= @place_info.website %>
+</p>
+
+<p>
   <strong>Address:</strong>
   <%= @address %>
 </p>

@@ -54,6 +54,6 @@ class PlaceInfosController < ApplicationController
     end
 
     def place_info_params
-      params.require(:place_info).permit(:name_en, :name_jp, :img_url, :dialect_id, :latitude, :longtitude, :category, :description, images: [])
+      params.require(:place_info).permit(:name_en, :name_jp, :img_url, :dialect_id, :latitude, :longtitude, :category, :description, :website, images: [])
     end
 end
