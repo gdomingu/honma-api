@@ -41,6 +41,7 @@ module Api
               image: url_for(place_info.images.first),
               description: place_info.description,
               category: place_info.category,
+              website: place_info.website,
               address: get_address(place_info),
             }
           end
@@ -55,7 +56,6 @@ module Api
       if place_info.latitude.present? && place_info.longtitude.present?
         return Geocoder.search([place_info.latitude, place_info.longtitude]).first.address
       end
-      nil
     end
 
   end
