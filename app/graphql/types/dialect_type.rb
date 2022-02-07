@@ -12,5 +12,6 @@ module Types
     field :complete_btn_text, String
     field :description, String, null: false
     field :area, Integer
+    field :place_infos, [PlaceInfoType]
   end
 end
