@@ -53,3 +53,6 @@ gem "geocoder", "1.7.0"
 
 gem "mini_magick"
 gem "image_processing"
+
+gem "graphql"
+gem 'graphiql-rails', group: :development
