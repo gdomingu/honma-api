@@ -19,10 +19,14 @@ module Types
     field :place_infos, [Types::PlaceInfoType], null: false do
       description 'Find place infos by dialect id'
       argument :dialect_id, ID, required: true
+      argument :category, String, required: false, default_value: nil
     end
 
-    def place_infos(dialect_id:)
-      PlaceInfo.where(dialect_id: dialect_id)
+    def place_infos(dialect_id:, category:)
+      if(category.nil?)
+        return PlaceInfo.where(dialect_id: dialect_id)
+      end
+      PlaceInfo.where(dialect_id: dialect_id, category: category)
     end
   end
 end
