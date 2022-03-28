@@ -14,12 +14,19 @@ module Types
     field :category, String
     field :description, String
     field :website, String
+    field :address, String
 
     def image_urls
       if object.images.present?
         object.images.map do |image|
           polymorphic_url(image)
         end
+      end
+    end
+
+    def address
+      if object.latitude.present? && object.longtitude.present?
+        Geocoder.search([object.latitude, object.longtitude]).first.address
       end
     end
   end
