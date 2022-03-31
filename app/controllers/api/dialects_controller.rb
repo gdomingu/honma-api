@@ -37,15 +37,6 @@ module Api
       end
       render json: dialects
     end
-
-    private
-
-    def get_address(place_info)
-      if place_info.latitude.present? && place_info.longtitude.present?
-        return Geocoder.search([place_info.latitude, place_info.longtitude]).first.address
-      end
-    end
-
   end
 end
 
