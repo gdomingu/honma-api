@@ -56,3 +56,5 @@ gem "image_processing"
 
 gem "graphql"
 gem 'graphiql-rails', group: :development
+
+gem 'active_storage_validations', '~> 0.8'
