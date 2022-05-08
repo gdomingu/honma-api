@@ -58,3 +58,4 @@ gem "graphql"
 gem 'graphiql-rails', group: :development
 
 gem 'active_storage_validations', '~> 0.8'
+gem "rspec-rails", group: [:development, :test]
