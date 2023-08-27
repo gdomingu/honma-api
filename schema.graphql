@@ -1,0 +1,53 @@
+type Dialect {
+  area: Int
+  completeBtnText: String
+  createdAt: ISO8601DateTime!
+  description: String!
+  id: ID!
+  nameEn: String
+  nameJp: String
+  nextBtnText: String
+  placeInfos: [PlaceInfo!]
+  startBtnText: String
+  updatedAt: ISO8601DateTime!
+}
+
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type Mutation {
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
+
+type PlaceInfo {
+  address: String
+  category: String
+  createdAt: ISO8601DateTime!
+  description: String
+  dialect: Dialect!
+  id: ID!
+  imageUrls: [String!]
+  latitude: Float
+  longtitude: Float
+  nameEn: String
+  nameJp: String
+  updatedAt: ISO8601DateTime!
+  website: String
+}
+
+type Query {
+  """
+  Find a dialect by ID
+  """
+  dialect(id: ID!): Dialect!
+
+  """
+  Find place infos by dialect id
+  """
+  placeInfos(category: String = null, dialectId: ID!): [PlaceInfo!]!
+}
