@@ -31,14 +31,45 @@ RSpec.describe Example, type: :model do
     end
 
     context 'with missing attributes' do
-      let(:example) do
+      let(:example1) do
         Example.new(
           grammar_id: grammar.id
         )
       end
+      let(:example2) do
+        Example.new(
+          grammar_id: grammar.id,
+          language: 'en'
+        )
+      end
+      let(:example3) do
+        Example.new(
+          grammar_id: grammar.id,
+          language: 'en',
+          sentence1: 'test sentence 1'
+        )
+      end
+      let(:example4) do
+        Example.new(
+          grammar_id: grammar.id,
+          language: 'en',
+          sentence2: 'test sentence 2'
+        )
+      end
+      let(:example5) do
+        Example.new(
+          grammar_id: grammar.id,
+          sentence1: 'test sentence 1',
+          sentence2: 'test sentence 2'
+        )
+      end
 
       it 'is invalid' do
-        expect(example).to be_invalid
+        expect(example1).to be_invalid
+        expect(example2).to be_invalid
+        expect(example3).to be_invalid
+        expect(example4).to be_invalid
+        expect(example5).to be_invalid
       end
     end
   end
