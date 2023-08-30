@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
 
@@ -5,7 +7,7 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.includes(grammar: :dialect).order("dialects.name_en")
     if params[:grammar_id]
       @grammar = Grammar.find(params[:grammar_id])
-      @quizzes = @grammars.where(grammar: @grammar) 
+      @quizzes = @grammars.where(grammar: @grammar)
     end
   end
 
@@ -14,13 +16,25 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new(grammar_id: params[:grammar_id])
+    @dialects = Dialect.order(:name_en)
+
+    return unless params[:dialect_id].present?
+
+    @grammars =
+      Grammar.where(
+        dialect_id: params[:dialect_id]
+      ).order(:description)
   end
 
   def edit
   end
 
-  def create 
+  def create
     @quiz = Quiz.new(quiz_params)
+
+    if params[:quiz][:dialect_id] && quiz_params[:grammar_id].nil?
+      return redirect_to new_quiz_path(dialect_id: params[:quiz][:dialect_id])
+    end
 
     respond_to do |format|
       if @quiz.save
@@ -48,17 +62,18 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: root_path, notice: 'Quiz was successfully destroyed.'}
+      format.html { redirect_back fallback_location: root_path, notice: 'Quiz was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_quiz
-      @quiz = Quiz.find(params[:id])
-    end
 
-    def quiz_params
-      params.require(:quiz).permit(:tokyo, :answer, :grammar_id)
-    end
+  def set_quiz
+    @quiz = Quiz.find(params[:id])
+  end
+
+  def quiz_params
+    params.require(:quiz).permit(:tokyo, :answer, :grammar_id)
+  end
 end
