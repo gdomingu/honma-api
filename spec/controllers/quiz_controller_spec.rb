@@ -4,15 +4,7 @@ require 'rails_helper'
 
 RSpec.describe QuizzesController, type: :controller do
   describe '#create' do
-    let(:grammar) do
-      Grammar.create!(
-        description: 'test description',
-        position: 1,
-        dialect_id: 4,
-        label: 'test',
-        commonness: 3
-      )
-    end
+    let(:grammar) { create(:grammar) }
 
     context 'with valid params' do
       let(:valid_params) do
