@@ -11,7 +11,19 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :grammar_id %>
+  <% if quiz.grammar_id.nil? %>
+    <div class="field">
+      <%= form.label :dialect_id %>
+      <%= form.collection_select :dialect_id, @dialects, :id, :name_en, {include_blank: 'None', selected: params[:dialect_id]}, {onChange: 'this.form.requestSubmit()', disabled: params[:dialect_id].present? } %>
+
+      <% if @grammars.present? %>
+        <%= form.label :grammar_id %>
+        <%= form.select :grammar_id, @grammars.pluck(:description, :id) %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :grammar_id, value: quiz.grammar_id %>
+  <% end %>
 
   <div class="field">
     <%= form.label :tokyo %>
@@ -25,5 +37,11 @@
 
   <div class="actions">
     <%= form.submit %>
+  </div>
+
+  <div>
+    <button>
+      <%= link_to 'Back', quizzes_path %>
+    </button>
   </div>
 <% end %>
