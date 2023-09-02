@@ -2,6 +2,14 @@ require 'faker'
 
 FactoryBot.define do
   factory :dialect do
+    name_en {"Some dialect"}
+    name_jp {"なんとか弁"}
+    start_btn_text {"はじめる"}
+    next_btn_text {"次"}
+    complete_btn_text {"できた"}
+    description { Faker::Lorem.paragraph }
+    area { 5 }
+
     trait :hiroshima do
       name_en {"Hiroshima"}
       name_jp {"広島弁"}

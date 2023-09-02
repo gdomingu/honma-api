@@ -4,13 +4,15 @@ require 'rails_helper'
 
 RSpec.describe QuizzesController, type: :controller do
   describe '#create' do
-    let(:grammar) do
-      Grammar.create!(
-        description: 'test description',
-        position: 1,
-        dialect_id: 4,
-        label: 'test',
-        commonness: 3
+    let(:grammar) { create(:grammar) }
+
+    before do
+      sign_in(
+        User.create(
+          email: Faker::Internet.email,
+          admin: false,
+          password: Faker::Internet.password
+        )
       )
     end
 
@@ -24,7 +26,7 @@ RSpec.describe QuizzesController, type: :controller do
       end
 
       it 'saves quiz properly' do
-        expect { Quiz.create!(valid_params) }.to change(Quiz, :count).by(1)
+        expect { post :create, params: { quiz: valid_params } }.to change(Quiz, :count).by(1)
       end
     end
 
@@ -58,20 +60,20 @@ RSpec.describe QuizzesController, type: :controller do
         }
       end
 
-      it 'raises ActiveRecord::RecordInvalid error' do
-        expect { Quiz.create!(invalid_params1) }.to raise_error(ActiveRecord::RecordInvalid)
+      it 'will not save a record' do
+        expect { post :create, params: { quiz: invalid_params1 } }.to change(Quiz, :count).by(0)
       end
 
-      it 'raises ActiveRecord::RecordInvalid error' do
-        expect { Quiz.create!(invalid_params2) }.to raise_error(ActiveRecord::RecordInvalid)
+      it 'will not save a record' do
+        expect { post :create, params: { quiz: invalid_params2 } }.to change(Quiz, :count).by(0)
       end
 
-      it 'raises ActiveRecord::RecordInvalid error' do
-        expect { Quiz.create!(invalid_params3) }.to raise_error(ActiveRecord::RecordInvalid)
+      it 'will not save a record' do
+        expect { post :create, params: { quiz: invalid_params3 } }.to change(Quiz, :count).by(0)
       end
 
-      it 'raises ActiveRecord::RecordInvalid error' do
-        expect { Quiz.create!(invalid_params4) }.to raise_error(ActiveRecord::RecordInvalid)
+      it 'will not save a record' do
+        expect { post :create, params: { quiz: invalid_params4 } }.to change(Quiz, :count).by(0)
       end
     end
   end
