@@ -63,3 +63,5 @@ gem "rspec-rails", group: [:development, :test]
 gem "factory_bot_rails", group: [:development, :test]
 
 gem 'faker', '~> 1.9.3'
+
+gem "bullet", group: [:development, :test]
