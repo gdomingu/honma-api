@@ -19,6 +19,7 @@ module Api
             quizzes: grammar.quizzes.map do |quiz|
                        {
                          id: quiz.id,
+                         grammar_id: grammar.id,
                          tokyo: quiz.tokyo,
                          answer: quiz.answer,
                          quiz_completed: QuizCompletion.find_by(user: current_user, quiz: quiz)&.created_at
