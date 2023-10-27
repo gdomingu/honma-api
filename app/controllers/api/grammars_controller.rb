@@ -5,8 +5,9 @@ module Api
     def index
       grammars_with_examples =
         Grammar.order(:position)
+               .joins(:examples)
                .includes([[examples: :audio_clip_attachment], :quizzes])
-               .where.not(examples: { id: nil }).distinct
+               .distinct
 
       grammars =
         grammars_with_examples.map do |grammar|
