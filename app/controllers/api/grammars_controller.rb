@@ -3,13 +3,8 @@
 module Api
   class GrammarsController < ApplicationController
     def index
-      grammars_with_examples =
-        Grammar.order(:position)
-               .includes([[examples: :audio_clip_attachment], :quizzes])
-               .where.not(examples: { id: nil }).distinct
-
       grammars =
-        grammars_with_examples.map do |grammar|
+        Grammar.order(:position).includes([[examples: :audio_clip_attachment], :quizzes]).map do |grammar|
           {
             id: grammar.id,
             dialect_id: grammar.dialect_id,
